@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -58,4 +60,26 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
+    implementation("androidx.compose.foundation:foundation:1.6.0")
+    val nav_version = "2.8.9"
+
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    implementation("androidx.appcompat:appcompat:1.6.1")
+
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    val hilt_version = "2.48"
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-compiler:$hilt_version")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    val retrofit_version = "2.9.0"
+
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
 }
