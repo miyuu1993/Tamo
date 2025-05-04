@@ -58,13 +58,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//確認用
-@Composable
-fun TamoApp() {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "onboarding") {
-        composable("onboarding") { OnboardingScreen(navController) }
-        composable("main") { MainScreen() }
-    }
-}
