@@ -54,7 +54,10 @@ fun AddTaskDialog(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "リマインド")
+                    Text(
+                        text = "リマインド",
+                        color = Color.DarkGray
+                    )
                     Spacer(modifier = Modifier.width(8.dp))
                     Switch(
                         checked = remindEnabled,

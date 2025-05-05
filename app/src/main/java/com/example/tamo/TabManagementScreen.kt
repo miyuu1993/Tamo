@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.tamo.components.AddTabDialog
@@ -31,7 +32,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun TabManagementScreen(
     navController: NavController,
-    viewModel: MainViewModel = hiltViewModel()
+    viewModel: MainViewModel = hiltViewModel(),
 ) {
     val systemUiController = rememberSystemUiController()
     val tabs by viewModel.tabs.collectAsState()
@@ -39,6 +40,7 @@ fun TabManagementScreen(
     var tabToDelete by remember { mutableStateOf<Tab?>(null) }
     var editingTab by remember { mutableStateOf<Tab?>(null) }
     var editedTabName by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     SideEffect {
         systemUiController.setStatusBarColor(
@@ -91,7 +93,7 @@ fun TabManagementScreen(
             DeleteTabDialog(
                 tab = tabToDelete!!,
                 onConfirm = {
-                    viewModel.deleteTab(tabToDelete!!)
+                    viewModel.deleteTab(tabToDelete!!, context)
                     tabToDelete = null
                 },
                 onDismiss = { tabToDelete = null }

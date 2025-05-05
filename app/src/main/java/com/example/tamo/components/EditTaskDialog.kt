@@ -45,7 +45,8 @@ fun EditTaskDialog(
                 text = "タスクを編集",
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                color = Color.DarkGray
             )
         },
         text = {
@@ -61,7 +62,10 @@ fun EditTaskDialog(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "リマインド")
+                    Text(
+                        text = "リマインド",
+                        color = Color.DarkGray
+                    )
                     Spacer(modifier = Modifier.width(8.dp))
                     Switch(
                         checked = remindEnabled,
@@ -103,7 +107,10 @@ fun EditTaskDialog(
                             ).show()
                         }
                     ) {
-                        Text(text = "通知時間 ${String.format("%02d:%02d", hour, minute)}")
+                        Text(
+                            text = "通知時間 ${String.format("%02d:%02d", hour, minute)}",
+                            color = Color.DarkGray
+                        )
                     }
                 }
             }

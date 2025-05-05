@@ -1,11 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
-
 android {
     namespace = "com.example.tamo"
     compileSdk = 35
@@ -33,6 +31,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+        composeOptions {
+            kotlinCompilerExtensionVersion = "1.5.11" // BOM 2024.04.01 対応のcompiler
+        }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -67,19 +69,22 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
 
-    val room_version = "2.6.1"
+    val room_version = "2.5.0"
     implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
     val hilt_version = "2.48"
     implementation("com.google.dagger:hilt-android:$hilt_version")
-    kapt("com.google.dagger:hilt-compiler:$hilt_version")
+    ksp("com.google.dagger:hilt-compiler:$hilt_version")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     val retrofit_version = "2.9.0"
 
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 
 }

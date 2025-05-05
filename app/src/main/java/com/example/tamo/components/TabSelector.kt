@@ -5,18 +5,19 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.tamo.data.Tab
 import com.example.tamo.viewmodel.MainViewModel
 
 @Composable
@@ -32,7 +33,7 @@ fun TabSelector(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFFF6D1F)) // オレンジ色
+            .background(Color(0xFFFF6D1F))
     ) {
         Row(
             modifier = Modifier
@@ -44,13 +45,19 @@ fun TabSelector(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "チェック済みタスクを一括削除",
                 tint = Color.DarkGray,
-                modifier = Modifier.clickable { onDeleteCompletedTasks() }
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .clickable { onDeleteCompletedTasks() }
+                    .padding(6.dp)
             )
             Icon(
-                imageVector = Icons.Default.Menu,
+                imageVector = Icons.Default.Settings,
                 contentDescription = "タブ追加",
                 tint = Color.DarkGray,
-                modifier = Modifier.clickable { onAddTabClicked() }
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .clickable { onAddTabClicked() }
+                    .padding(6.dp)
             )
         }
         Spacer(modifier = Modifier.height(8.dp))

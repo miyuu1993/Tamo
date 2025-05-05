@@ -1,12 +1,10 @@
 package com.example.tamo.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.tamo.SimpleMarqueeText
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun QuoteBanner(text: String?, author: String?) {
@@ -17,6 +15,6 @@ fun QuoteBanner(text: String?, author: String?) {
         },
         modifier = Modifier
             .fillMaxWidth(),
-        style = MaterialTheme.typography.bodyLarge
+        style = MaterialTheme.typography.bodyLarge.copy(color = Color.DarkGray)
     )
 }

@@ -1,4 +1,4 @@
-package com.example.tamo
+package com.example.tamo.components
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
@@ -16,25 +16,24 @@ fun SimpleMarqueeText(
     text: String,
     modifier: Modifier = Modifier,
     style: TextStyle = MaterialTheme.typography.bodyMedium,
-    speedPxPerSecond: Float = 50f
+    speedPxPerSecond: Float = 80f
 ) {
     var textWidth by remember { mutableStateOf(0) }
     var visibleWidth by remember { mutableStateOf(0) }
 
+    val distance = (textWidth + visibleWidth).coerceAtLeast(1)
+
+    val durationMillis = (distance / speedPxPerSecond * 1000).toInt()
+
+
     // アニメーション用の状態
     val infiniteTransition = rememberInfiniteTransition(label = "marquee")
 
-    val durationMillis = if (textWidth > visibleWidth && textWidth != 0) {
-        ((textWidth.toFloat() + visibleWidth) / speedPxPerSecond * 1000).toInt()
-    } else {
-        20000 // テキストが短すぎるとき用のデフォルト
-    }
-
     val animatedOffset by infiniteTransition.animateFloat(
         initialValue = 0f,
-        targetValue = 1f,
+        targetValue = distance.toFloat(),
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 20000, easing = LinearEasing),
+            animation = tween(durationMillis = durationMillis, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "marquee"
@@ -60,7 +59,7 @@ fun SimpleMarqueeText(
 
                 // テキストが表示領域より長い場合のみアニメーション
                 val offset = if (textWidth > visibleWidth) {
-                    (-animatedOffset * (textWidth - visibleWidth)).roundToInt()
+                    (-animatedOffset % (textWidth + 40)).roundToInt() // 少し余白を加える
                 } else {
                     0
                 }

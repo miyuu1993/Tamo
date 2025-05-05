@@ -26,7 +26,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.draw.clip
 
 @Composable
-fun OnboardingPageContent(page: OnboardingPage, isLast: Boolean, onStartClick: () -> Unit) {
+fun OnboardingPageContent(page: OnboardingPage, isLast: Boolean, onFinish: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,12 +55,15 @@ fun OnboardingPageContent(page: OnboardingPage, isLast: Boolean, onStartClick: (
         }
         if (isLast) {
             Spacer(modifier = Modifier.height(24.dp))
-            Button(onClick = onStartClick,
+            Button(onClick = onFinish,
                     colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,            // ボタンの背景色
-                contentColor = Color(0xFFFF6D1F)         // テキストの色
+                    containerColor = Color.White,
+                contentColor = Color(0xFFFF6D1F)
             )) {
-                Text("start")
+                Text(
+                    "start",
+                    fontSize = 28.sp
+                )
             }
         }
     }

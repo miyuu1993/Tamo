@@ -9,21 +9,17 @@ import android.os.Build
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import androidx.compose.runtime.Composable
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.tamo.onboarding.OnboardingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setBackgroundDrawable(null)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             TamoTheme {
-                TamoApp()
+                AppNavigation(context = this)
             }
         }
     }

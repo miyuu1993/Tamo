@@ -19,25 +19,22 @@
             android:exported="true" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".entry.SplashActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.Splash"> <!-- スプラッシュ専用のテーマ -->
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".entry.LauncherActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Tamo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"
+            android:theme="@style/Theme.Tamo" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

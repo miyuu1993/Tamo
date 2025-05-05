@@ -1,6 +1,5 @@
 package com.example.tamo.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -54,7 +53,8 @@ fun TaskItem(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    color = Color.DarkGray
                 )
 
                 task.remindAt?.let { timeMillis ->
@@ -65,8 +65,8 @@ fun TaskItem(
                         }
                         Text(
                             text = time,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color.Gray
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.DarkGray
                         )
                     }
                 }

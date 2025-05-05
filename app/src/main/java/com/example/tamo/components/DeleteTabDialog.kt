@@ -18,8 +18,14 @@ fun DeleteTabDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("タブを削除しますか？") },
-        text = { Text("このタブに含まれるタスクもすべて削除されます。") },
+        title = { Text(
+            "タブを削除しますか？",
+            color = Color.DarkGray
+        ) },
+        text = { Text(
+            "このタブに含まれるタスクもすべて削除されます。",
+            color = Color.DarkGray
+        ) },
         confirmButton = {
             TextButton(
                 onClick = onConfirm,

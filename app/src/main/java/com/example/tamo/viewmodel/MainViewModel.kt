@@ -3,7 +3,6 @@ package com.example.tamo.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tamo.data.Meigen
 import com.example.tamo.data.MeigenRepository
 import com.example.tamo.data.Tab
 import com.example.tamo.data.TabRepository
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,6 +43,7 @@ class MainViewModel @Inject constructor(
     val quoteAuthor: StateFlow<String?> = _quoteAuthor
 
     init {
+
         viewModelScope.launch {
             tabs.collect { tabList ->
                 val currentId = _selectedTabId.value
@@ -128,11 +127,12 @@ class MainViewModel @Inject constructor(
     }
 
     // タブ削除
-    fun deleteTab(tab: Tab) {
+    fun deleteTab(tab: Tab, context: Context) {
         viewModelScope.launch {
             // タブに関連するタスクを削除
             val tabTasks = taskRepository.getTasksByTab(tab.id).first()
             tabTasks.forEach { task ->
+                NotificationHelper.cancelReminder(context, task.id)
                 taskRepository.deleteTask(task)
             }
 

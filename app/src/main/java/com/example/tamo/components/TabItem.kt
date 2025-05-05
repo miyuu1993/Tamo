@@ -46,7 +46,7 @@ fun TabItem(
             Text(
                 text = tab.name,
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color.Black
+                color = Color.DarkGray
             )
 
             IconButton(onClick = { onDelete(tab) }) {
