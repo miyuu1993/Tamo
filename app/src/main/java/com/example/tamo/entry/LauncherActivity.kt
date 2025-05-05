@@ -34,8 +34,6 @@ class LauncherActivity : ComponentActivity() {
                     )
         }
 
-
-
         // スプラッシュ非表示にした状態でCompose開始
         setContent {
             TamoTheme {

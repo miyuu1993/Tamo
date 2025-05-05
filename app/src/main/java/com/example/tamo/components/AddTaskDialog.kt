@@ -72,8 +72,6 @@ fun AddTaskDialog(
 
                 if (remindEnabled) {
 
-                    val timePickerState = rememberTimePickerState()
-
                     val context = LocalContext.current
 
                     var hour by remember { mutableStateOf(0) }

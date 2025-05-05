@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -87,11 +88,9 @@ fun AppNavigation(context: Context) {
 
 @Composable
 fun SplashContent() {
-    // スプラッシュ画面と同じデザインをComposeで実装
-    // activity_splash.xmlと同じ見た目になるようにする
-    Surface(modifier = Modifier.fillMaxSize()) {
-        // スプラッシュ画面のロゴやブランディングなどを配置
-        // インジケーターは表示しない、またはブランドの一部として表示
-
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+                color = Color(0xFFFF6D1F)
+    ) {
     }
 }
