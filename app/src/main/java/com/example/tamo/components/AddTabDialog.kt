@@ -39,7 +39,8 @@ fun AddTabDialog(
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.DarkGray,
-                    unfocusedBorderColor = Color.DarkGray
+                    unfocusedBorderColor = Color.DarkGray,
+                    cursorColor = Color.DarkGray
                 )
             )
         },

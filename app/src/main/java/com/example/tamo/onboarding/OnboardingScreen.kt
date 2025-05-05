@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import com.example.tamo.R
 import androidx.navigation.NavHostController
 import com.example.tamo.MainActivity
+import com.example.tamo.util.hideSystemBars
+import com.example.tamo.util.showSystemBars
 
 
 @Composable
@@ -37,6 +39,9 @@ fun OnboardingScreen(
         }
     }
 
+    androidx.compose.runtime.SideEffect {
+        activity?.hideSystemBars()
+    }
 
     val pages = listOf(
         OnboardingPage(

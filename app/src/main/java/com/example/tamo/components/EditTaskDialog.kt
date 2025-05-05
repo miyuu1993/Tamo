@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.tamo.data.Task
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditTaskDialog(
     task: Task,
@@ -54,7 +55,12 @@ fun EditTaskDialog(
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        focusedBorderColor = Color.DarkGray,
+                        unfocusedBorderColor = Color.DarkGray,
+                        cursorColor = Color.DarkGray
+                    )
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))

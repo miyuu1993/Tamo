@@ -62,7 +62,7 @@ fun OnboardingPageContent(page: OnboardingPage, isLast: Boolean, onFinish: () ->
             )) {
                 Text(
                     "start",
-                    fontSize = 28.sp
+                    fontSize = 24.sp
                 )
             }
         }

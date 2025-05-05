@@ -1,5 +1,6 @@
 package com.example.tamo
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -49,7 +51,10 @@ fun MainScreen(navController: NavHostController, viewModel: MainViewModel = hilt
     val currentTabId = selectedTabId ?: 0
     val filteredTasks = tasks.filter { it.tabId == currentTabId }
 
+
     SideEffect {
+        systemUiController.isStatusBarVisible = true
+        systemUiController.isNavigationBarVisible = true
         systemUiController.setStatusBarColor(
             color = Color(0xFFFF6D1F)
         )
