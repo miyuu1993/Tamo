@@ -61,7 +61,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.0-alpha")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.34.0")
     implementation("androidx.compose.foundation:foundation:1.7.0")
     val nav_version = "2.8.9"
 
@@ -85,6 +85,5 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
-
 
 }
